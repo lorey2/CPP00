@@ -6,7 +6,7 @@
 /*   By: lorey <loic.rey.vs@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:07:08 by lorey             #+#    #+#             */
-/*   Updated: 2025/02/10 15:11:25 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/02/11 03:52:57 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 			break;
 		if (prompt == "ADD")
 			pb.add_contact();
-//		if (prompt == "SEARCH")
-//			pb.search();
+		if (prompt == "SEARCH")
+			pb.search();
 	}
 }

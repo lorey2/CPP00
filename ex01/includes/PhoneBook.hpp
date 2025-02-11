@@ -6,7 +6,7 @@
 /*   By: lorey <loic.rey.vs@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:28:27 by lorey             #+#    #+#             */
-/*   Updated: 2025/02/10 14:54:55 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/02/11 03:50:50 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ class PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void add_contact(void);
+		void	add_contact(void);
+		void	big_shift(void);
+		void	search(void);
 };
 
 #endif
