@@ -6,7 +6,7 @@
 /*   By: lorey <loic.rey.vs@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:13:29 by lorey             #+#    #+#             */
-/*   Updated: 2025/02/11 05:13:32 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/24 15:39:01 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,11 @@
 PhoneBook::PhoneBook(void)
 {
 	nbr_contact = -1;
-
 }
 
 PhoneBook::~PhoneBook(void)
 {
 }
-
-/*void	PhoneBook::big_shift(void)
-{
-	int	i;
-
-	i = -1;
-	while(++i < 7)
-	{
-		contact_array[i].s_name(contact_array[i + 1].g_name());
-		contact_array[i].s_l_name(contact_array[i + 1].g_l_name());
-		contact_array[i].s_n_name(contact_array[i + 1].g_n_name());
-		contact_array[i].s_number(contact_array[i + 1].g_number());
-		contact_array[i].s_secret(contact_array[i + 1].g_secret());
-	}
-}*/
 
 void PhoneBook::big_shift(void)
 {
@@ -87,6 +71,7 @@ void	get_entry(Contact *contact_array)
 	check = 0;
 	while (entry.empty() || check == 1)
 	{
+		check = 0;
 		std::getline(std::cin, entry);
 		for (std::string::size_type i = 0; i < entry.size(); ++i)
 		{
@@ -97,11 +82,15 @@ void	get_entry(Contact *contact_array)
 				break;
 			}
 		}
-		if (std::atoi(entry.c_str()) - 1 > 7 || std::atoi(entry.c_str()) - 1 < 0)
+		if ((std::atoi(entry.c_str()) - 1 > 7 //check if entry less big than 7		c_str and then atoi is the easiest way to get a number I think
+			|| std::atoi(entry.c_str()) - 1 < 0 //bigger than 0
+			|| contact_array[std::atoi(entry.c_str()) - 1].g_number().empty()) //check if this entry has alreay been filled
+			&& check == 0)
+		{
 			std::cout << "entry too big or negative or null" << std::endl;
-		else if (contact_array[std::atoi(entry.c_str() - 1)].g_number() == "")
-			std::cout << "entry not valid" << std::endl;
-		else
+			check = 1;
+		}
+		else if (check == 0)
 			write_contact(contact_array[std::atoi(entry.c_str()) - 1]);
 	}
 }
@@ -111,8 +100,10 @@ void	PhoneBook::search(void)
 	int	i;
 
 	i = -1;
-	while (contact_array[++i].g_name() != "" && i < 8)
+	while (!contact_array[++i].g_name().empty() && i < 8)
 	{
+		//setw makes that only 10 character can be displayed
+		//format_name replace the 10th charac (if exists with a point)
 		std::cout << std::setw(10) << std::right << i + 1 << "|";
 		std::cout << std::setw(10) << std::right << format_name(contact_array[i].g_name()) << "|";
 		std::cout << std::setw(10) << std::right << format_name(contact_array[i].g_l_name()) << "|";

@@ -6,7 +6,7 @@
 /*   By: lorey <loic.rey.vs@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:19:48 by lorey             #+#    #+#             */
-/*   Updated: 2025/02/11 03:52:16 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/24 14:10:14 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ class Contact
 		void 		set_n_name(void);
 		void		set_number(void);
 		void		set_secret(void);
-		void		s_name(std::string name);
-		void		s_l_name(std::string l_name);
-		void		s_n_name(std::string n_name);
-		void		s_number(std::string number);
-		void		s_secret(std::string secret);
 		std::string	g_name(void);
 		std::string	g_l_name(void);
 		std::string	g_n_name(void);
